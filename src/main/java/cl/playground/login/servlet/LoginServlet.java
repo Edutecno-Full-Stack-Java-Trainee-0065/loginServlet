@@ -2,10 +2,10 @@ package cl.playground.login.servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -19,8 +19,12 @@ public class LoginServlet extends HttpServlet {
         String contrasena = req.getParameter("contrasena");
 
         if ("admin".equals(usuario) && "password".equals(contrasena)) {
-            HttpSession session = req.getSession();
-            session.setAttribute("usuario", usuario);
+
+            // Creando cookie
+            Cookie userCookie = new Cookie("usuario", usuario);
+            userCookie.setMaxAge(30 * 60); // 30 minutos
+            userCookie.setPath("/");
+            resp.addCookie(userCookie);
 
             resp.sendRedirect("bienvenida.jsp");
         } else {
