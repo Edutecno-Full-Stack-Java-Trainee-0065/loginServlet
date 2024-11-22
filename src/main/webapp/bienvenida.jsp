@@ -1,4 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    if (session.getAttribute("nickname") == null) {
+        response.sendRedirect("login");
+        return;
+    }
+%>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,7 +21,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="card-title text-center mb-4">Bienvenido, <%= session.getAttribute("usuario") %>!</h2>
+                    <h2 class="card-title text-center mb-4">Bienvenido, <%= session.getAttribute("nickname") %></h2>
                     <p class="text-center">Has iniciado sesión correctamente.</p>
                     <div class="d-grid">
                         <a href="logout" class="btn btn-primary">Cerrar sesión</a>

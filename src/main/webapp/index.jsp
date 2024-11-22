@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio Sesión</title>
+    <title>Registro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
@@ -16,31 +16,40 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="card-title text-center mb-4">Inicio Sesión</h2>
-
-                    <% if ("success".equals(request.getParameter("logout"))) { %>
-                    <div class="alert alert-success" role="alert">
-                        La sesión se ha cerrado correctamente.
-                    </div>
-                    <% } %>
+                    <h2 class="card-title text-center mb-4">Registro de Usuario</h2>
 
                     <% if (request.getParameter("error") != null) { %>
                     <div class="alert alert-danger" role="alert">
-                        Usuario o contraseña incorrectas
+                        Error en el registro. Por favor, intente nuevamente.
                     </div>
                     <% } %>
 
-                    <form action="login" method="post">
+                    <form action="register" method="post">
                         <div class="mb-3">
-                            <label for="usuario" class="form-label">Usuario</label>
-                            <input type="text" class="form-control" id="usuario" name="usuario" required>
+                            <label for="username" class="form-label">Nombre de Usuario</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
                         </div>
                         <div class="mb-3">
-                            <label for="contrasena" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                            <label for="nickname" class="form-label">Nickname</label>
+                            <input type="text" class="form-control" id="nickname" name="nickname" required>
                         </div>
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">Ingresar</button>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Registrarse</button>
+                        </div>
+                        <div class="text-center mt-3">
+                            <p>¿Ya tienes una cuenta? <a href="login" class="text-decoration-none">Iniciar Sesión</a></p>
                         </div>
                     </form>
                 </div>
